@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/intranet/uw-form/static/css/main.e39fc62a.css",
+    "main.js": "/intranet/uw-form/static/js/main.86e9b868.js",
+    "index.html": "/intranet/uw-form/index.html",
+    "main.e39fc62a.css.map": "/intranet/uw-form/static/css/main.e39fc62a.css.map",
+    "main.86e9b868.js.map": "/intranet/uw-form/static/js/main.86e9b868.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e39fc62a.css",
+    "static/js/main.86e9b868.js"
+  ]
+}
