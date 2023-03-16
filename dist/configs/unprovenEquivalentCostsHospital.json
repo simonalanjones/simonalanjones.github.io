@@ -1,0 +1,121 @@
+[
+  {
+    "step": 1,
+    "heading": "Request details",
+    "items": [
+      {
+        "type": "textArea",
+        "name": "theRequest",
+        "label": "What would you like us to do?",
+        "labelHelper": "Please be as detailed as possible and explain your expected outcome if appropriate",
+        "id": "theRequest",
+        "rows": 5,
+        "validationType": "string",
+        "validations": [
+          {
+            "type": "required",
+            "params": ["this field is required"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 2,
+    "heading": "Member details",
+    "items": [
+      [
+        {
+          "type": "text",
+          "name": "memberName",
+          "label": "Member name",
+          "id": "memberName",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "membershipNumber",
+          "label": "Membership number",
+          "id": "membershipNumber",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "step": 2,
+    "heading": "Hospital details",
+    "items": [
+      [
+        {
+          "type": "text",
+          "name": "hospitalName",
+          "label": "Hospital name",
+          "id": "hospitalName"
+        }
+      ],
+      [
+        {
+          "type": "radio",
+          "name": "londonLocation",
+          "label": "Is the hospital in London?",
+          "id": "londonLocation",
+          "options": ["Yes", "No"],
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "textArea",
+          "name": "procedureCodes",
+          "label": "Procedure codes",
+          "id": "procedureCodes",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ]
+    ]
+  },
+
+  {
+    "step": 3,
+    "heading": "Your details",
+    "items": [
+      {
+        "type": "text",
+        "name": "yourName",
+        "label": "Your name",
+        "id": "yourName"
+      },
+      {
+        "type": "text",
+        "name": "yourEmailAddress",
+        "label": "Your email address",
+        "id": "yourEmailAddress"
+      }
+    ]
+  }
+]
