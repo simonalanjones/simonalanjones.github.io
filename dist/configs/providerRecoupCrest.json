@@ -1,0 +1,226 @@
+[
+  {
+    "step": 1,
+    "heading": "Query details",
+    "items": [
+      [
+        {
+          "type": "textArea",
+          "name": "reason",
+          "label": "Reason for recoup?",
+          "id": "reason",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "name": "membershipNumber",
+          "label": "Membership number",
+          "id": "membershipNumber",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "providerNumber",
+          "label": "Provider number",
+          "id": "providerNumber",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "name": "vendorNumber",
+          "label": "Vendor number (eg 1=A, 4-D)",
+          "labelHelper": "Leave blank if no SAP access",
+          "id": "vendorNumber"
+        },
+        {
+          "type": "text",
+          "name": "originalInvoiceRef",
+          "label": "Original provider invoice ref",
+          "id": "originalInvoiceRef",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "checkbox",
+          "name": "originalClaimActisure",
+          "id": "originalClaimActisure",
+          "label": "Original claim assessed on Bristol Actisure"
+        }
+      ],
+      [
+        {
+          "type": "checkbox",
+          "name": "tpa",
+          "id": "tpa",
+          "label": "TPA"
+        }
+      ]
+    ]
+  },
+  {
+    "step": 2,
+    "heading": "CREST details",
+    "items": [
+      [
+        {
+          "type": "text",
+          "name": "originalClaimRef",
+          "label": "Original claim ref",
+          "id": "originalClaimRef",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "refundClaimRef",
+          "label": "Refund claim ref",
+          "labelHelper": "Must be done to enable recoup",
+          "id": "refundClaimRef",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "name": "reassessedClaimRef",
+          "label": "Reassessed claim ref",
+          "id": "reassessedClaimRef",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "amount",
+          "label": "Amount",
+          "id": "amount",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "name": "authDate",
+          "label": "Auth date (original claims)",
+          "id": "authDate",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "crestSignOn",
+          "label": "CREST signon (original claims)",
+          "id": "crestSignOn",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "step": 3,
+    "heading": "Your details",
+    "items": [
+      [
+        {
+          "type": "text",
+          "name": "yourName",
+          "label": "Your name",
+          "id": "yourName"
+        },
+        {
+          "type": "text",
+          "name": "yourEmailAddress",
+          "label": "Your email address",
+          "id": "yourEmailAddress",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            },
+            {
+              "type": "email",
+              "params": ["valid email is required"]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "name": "yourDept",
+          "label": "Your department",
+          "id": "yourDept",
+          "validationType": "string",
+          "validations": [
+            {
+              "type": "required",
+              "params": ["this field is required"]
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]
