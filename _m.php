@@ -1,65 +1,96 @@
-<?php 
+<?php
 
-class metaData {
-	
-	// start with default meta data but replace it when found in CSV file
-	public $metaArr = [
-		'title'=>'Car Insurance for Women - Diamond UK', 
-		'description'=>'Car Insurance for Women', 
-		'keywords'=>'car insurance for women, female car insurance, motor insurance, female driver, diamond uk'
-	];
-	private $_file;
-	private $_currentUrl;
+/**
+ * Class MetaData
+ * This class handles retrieving and setting metadata based on a CSV file.
+ */
+class MetaData
+{
+    /**
+     * @var array $metaArr
+     * Default meta data, but will be replaced if found in CSV file.
+     */
+    public $metaArr = [
+        'title' => 'Car Insurance for Women - Diamond UK',
+        'description' => 'Car Insurance for Women',
+        'keywords' => 'car insurance for women, female car insurance, motor insurance, female driver, diamond uk'
+    ];
 
-	// put a dummy placeholder variable as previously used in the calling code
-	public function __construct($brand = ''){
-		// check the current URL and save it for later
-		$this->_currentUrl = getURL();
+    /**
+     * @var resource|false $_file
+     * File resource for the CSV file.
+     */
+    private $_file;
 
-		$csvFilePath = $_SERVER['DOCUMENT_ROOT'] . "/meta_data.csv";
-		$file = fopen($csvFilePath, "r");
-		
-		if (!$file === false) {
-			$this->_file = $file;
-		}
-	}
-	
-	//get the current url which will be used for a match - void 
-	private function getURL(){
-	
-		$currentUrl = $_SERVER['PHP_SELF'];
-		// remove any trailing characters
-		$url = strtok($currentUrl,'?#');
-		
-		//test url to ensure it's safe
-		if(preg_match('/^[a-z0-9\s\/\-\_\.]+$/i', $url)){		
-			return $url;	
-		}		
-	}
+    /**
+     * @var string $_currentUrl
+     * Stores the current URL.
+     */
+    private $_currentUrl;
 
-	public function retrieveMeta(){
-		// if the file can't be read then back-out as the default meta will already be set
-		if (!$this->_file === false) {
-			$this->getAndSetMetaData();		
-		} 
-	}
+    /**
+     * MetaData constructor.
+     * @param string $brand
+     * A dummy placeholder variable as previously used in the calling code.
+     */
+    public function __construct($brand = '')
+    {
+        $this->setCurrentUrl();
+        $this->openCSVFile();
+    }
 
-	private function getAndSetMetaData(){
+    /**
+     * Sets the current URL for later use.
+     */
+    private function setCurrentUrl()
+    {
+        $currentUrl = $_SERVER['PHP_SELF'];
+        // Remove any trailing characters
+        $url = strtok($currentUrl, '?#');
 
-		while (($data = fgetcsv($this->_file)) !== false) {
-			$pageTitleFromCSV = $data[0];
-			$keywordsFromCSV = $data[1];
-			$descriptionFromCSV = $data[2];
-			$urlFromCSV= $data[3];
+        // Test URL to ensure it's safe
+        if (preg_match('/^[a-z0-9\s\/\-\_\.]+$/i', $url)) {
+            $this->_currentUrl = $url;
+        }
+    }
 
-			if ($urlFromCSV === $this->_currentUrl) {
-				$this->metaArr['title'] = htmlentities($pageTitleFromCSV);
-				$this->metaArr['keywords'] = htmlentities($keywordsFromCSV);
-				$this->metaArr['description'] = htmlentities($urlFromCSV);
-				break;
-			}
-		}
-	}
+    /**
+     * Opens the CSV file and sets the file resource if available.
+     */
+    private function openCSVFile()
+    {
+        $csvFilePath = $_SERVER['DOCUMENT_ROOT'] . "/meta_data.csv";
+        $file = fopen($csvFilePath, "r");
+
+        if ($file !== false) {
+            $this->_file = $file;
+        }
+    }
+
+    /**
+     * Retrieves the metadata from the CSV file and sets it if found.
+     */
+    public function retrieveMeta()
+    {
+        if ($this->_file !== false) {
+            $this->getAndSetMetaData();
+        }
+    }
+
+    /**
+     * Reads the CSV file and sets the metadata if a matching URL is found.
+     */
+    private function getAndSetMetaData()
+    {
+        while (($data = fgetcsv($this->_file)) !== false) {
+            [$pageTitleFromCSV, $keywordsFromCSV, $descriptionFromCSV, $urlFromCSV] = $data;
+
+            if ($urlFromCSV === $this->_currentUrl) {
+                $this->metaArr['title'] = htmlentities($pageTitleFromCSV);
+                $this->metaArr['keywords'] = htmlentities($keywordsFromCSV);
+                $this->metaArr['description'] = htmlentities($descriptionFromCSV);
+                break;
+            }
+        }
+    }
 }
-
-?>
